@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Stopwatch = () => {
+const Stopwatch2 = () => {
   const [milliseconds, setMilliseconds] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -85,4 +85,4 @@ const Stopwatch = () => {
   );
 };
 
-export default Stopwatch;
+export default Stopwatch2;
