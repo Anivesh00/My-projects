@@ -1,20 +1,19 @@
+// index.js
 import React from "react";
-import { createRoot } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
 import "./index.css";
-import Stopwatch from "./components/Stopwatch";
-import Search from "./components/Search";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = createRoot(document.getElementById("root"));
-
-root.render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Search />} />
-        <Route path="/stop-watch" element={<Stopwatch />} />
-        <Route path="/search" element={<Search />} />
-      </Routes>
+      {" "}
+      {/* Wrap your entire application with BrowserRouter */}
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );
+
+reportWebVitals();
