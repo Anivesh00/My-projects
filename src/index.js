@@ -8,7 +8,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Stopwatch />}></Route>
+        <Route path="/" element={<Search />}></Route>
       </Routes>
       <Routes>
         <Route path="/stop-watch" element={<Stopwatch />}></Route>
