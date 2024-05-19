@@ -152,7 +152,7 @@ const Search = () => {
             <tr
               key={index}
               className={`${
-                index % 2 == 0
+                index % 2 === 0
                   ? "bg-ani-primary-color"
                   : "bg-ani-secondry-color"
               } text-white`}
