@@ -1,7 +1,8 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css"; // Import the Tailwind CSS file
+import "./index.css";
 import Stopwatch from "./components/Stopwatch";
+import Search from "./components/Search";
 
 export default function App() {
   return (
@@ -11,6 +12,10 @@ export default function App() {
       </Routes>
       <Routes>
         <Route path="/stop-watch" element={<Stopwatch />}></Route>
+      </Routes>
+
+      <Routes>
+        <Route path="/search" element={<Search />}></Route>
       </Routes>
     </BrowserRouter>
   );
