@@ -1,107 +1,55 @@
 import React, { useState, useEffect } from "react";
 import searchSvg from "../icons/search-svgrepo-com.svg";
+import { data } from "../JSON Data/data";
 
-const data = [
-  {
-    _id: "664991c7a354578bd5ee4f5e",
-    name: "Kelley Hansen",
-    gender: "female",
-    company: "ENTROFLEX",
-    email: "kelleyhansen@entroflex.com",
-    phone: "+1 (955) 461-2017",
-    address: "126 Apollo Street, Galesville, Northern Mariana Islands, 5690",
-  },
-  {
-    _id: "664991c7c4c3d201e3b04974",
-    name: "Tamera Travis",
-    gender: "female",
-    company: "AMTAS",
-    email: "tameratravis@amtas.com",
-    phone: "+1 (848) 559-2981",
-    address: "587 Lorimer Street, Gerton, Vermont, 4426",
-  },
-  {
-    _id: "664991c7bd016e0c39fec668",
-    name: "Sykes Carpenter",
-    gender: "male",
-    company: "PYRAMIA",
-    email: "sykescarpenter@pyramia.com",
-    phone: "+1 (899) 526-2253",
-    address: "473 Merit Court, Dargan, Pennsylvania, 6237",
-  },
-  {
-    _id: "664991c732456d20e0f74339",
-    name: "Buchanan Garner",
-    gender: "male",
-    company: "UNI",
-    email: "buchanangarner@uni.com",
-    phone: "+1 (917) 558-2031",
-    address: "764 Neptune Avenue, Maxville, New York, 6703",
-  },
-  {
-    _id: "664991c7a084b4de7e55db19",
-    name: "Shaffer Durham",
-    gender: "male",
-    company: "TRASOLA",
-    email: "shafferdurham@trasola.com",
-    phone: "+1 (922) 575-2704",
-    address: "274 Veranda Place, Benson, Missouri, 3563",
-  },
-  {
-    _id: "664991c73c58fceff0d3737c",
-    name: "Christine Barton",
-    gender: "female",
-    company: "INVENTURE",
-    email: "christinebarton@inventure.com",
-    phone: "+1 (897) 485-3818",
-    address: "806 Troutman Street, Jugtown, New Jersey, 9952",
-  },
-  {
-    _id: "664991c758d460e11d914a98",
-    name: "Susanna Kinney",
-    gender: "female",
-    company: "DIGIFAD",
-    email: "susannakinney@digifad.com",
-    phone: "+1 (814) 539-3435",
-    address: "385 High Street, Whitestone, Delaware, 7048",
-  },
-  {
-    _id: "664991c79336c9fa4de0b81f",
-    name: "Katy Larsen",
-    gender: "female",
-    company: "TERSANKI",
-    email: "katylarsen@tersanki.com",
-    phone: "+1 (912) 542-3001",
-    address: "845 Summit Street, Cartwright, Marshall Islands, 9306",
-  },
-  {
-    _id: "664991c7e7e1547880042019",
-    name: "Estella Lewis",
-    gender: "female",
-    company: "TUBESYS",
-    email: "estellalewis@tubesys.com",
-    phone: "+1 (975) 445-3625",
-    address: "527 Henderson Walk, Vivian, Washington, 764",
-  },
-  {
-    _id: "664991c7ed5ee87b4d37826d",
-    name: "Ora Blair",
-    gender: "female",
-    company: "EXERTA",
-    email: "orablair@exerta.com",
-    phone: "+1 (840) 405-3391",
-    address: "831 Woodruff Avenue, Newry, New Hampshire, 5692",
-  },
-];
-
+/**
+ * Search component that allows searching through data with various criteria.
+ *
+ * @component
+ */
 const Search = () => {
+  // State variable for the general search input
   const [search, setSearch] = useState("");
+  // State variable for the facet search input
+  const [fecetSearch, setFecetSearch] = useState("");
+  // State variable to store facet labels based on the facet search input
+  const [fecetLabel, setFecetLabel] = useState([]);
+  // State variable to store the updated data based on search and facet filters
   const [updatedData, setUpdatedData] = useState(data);
 
+  /**
+   * Handles changes in the general search input.
+   * @param {Event} e - The input change event.
+   */
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
 
+  /**
+   * Handles changes in the facet search input.
+   * @param {Event} e - The input change event.
+   */
+  const handleFecetSearch = (e) => {
+    setFecetSearch(e.target.value);
+  };
+
+  /**
+   * Filters the data based on the selected facet filter.
+   * @param {string} name - The name to filter by.
+   */
+  const handleFecetFilter = (name) => {
+    if (name) {
+      const recentData = data.filter((item) =>
+        item.name.toString().toLowerCase().startsWith(name.toLowerCase())
+      );
+      setUpdatedData(recentData);
+      setFecetLabel(recentData);
+    }
+  };
+
+  /**
+   * useEffect hook to handle debounce for search and facet search inputs.
+   */
   useEffect(() => {
     const handleDebounce = setTimeout(() => {
       if (search) {
@@ -111,40 +59,82 @@ const Search = () => {
           )
         );
         setUpdatedData(filteredObject);
+      } else if (fecetSearch) {
+        const filteredFecet = data.filter((check) =>
+          check.name
+            .toString()
+            .toLowerCase()
+            .startsWith(fecetSearch.toLowerCase())
+        );
+        setFecetLabel(filteredFecet);
       } else {
         setUpdatedData(data);
       }
     }, 600);
-
     return () => {
       clearTimeout(handleDebounce);
     };
-  }, [search]);
-
+  }, [search, fecetSearch]);
   return (
     <div className="  flex w-full  justify-center  flex-col gap-6 py-12 px-10 overflow-y-auto">
-      <div className="flex mx-auto gap-6 text-2xl uppercase text-ani-secondry-light-color">
-        <img
-          src={searchSvg}
-          alt="search icon"
-          className="w-8 aspect-square cursor-pointer"
-        />
-        <input
-          type="text"
-          placeholder="search your products"
-          className="border px-6 py-2 pb-3 rounded-full leading-snug text-ani-default-dark font-medium text-lg shadow-ani-default-shadow"
-          value={search}
-          onChange={handleSearch}
-        />
+      <div className="flex flex-col md:flex-row mx-auto gap-6 text-2xl uppercase text-ani-secondry-light-color">
+        <div className="flex gap-6">
+          <img
+            src={searchSvg}
+            alt="search icon"
+            className="w-8 aspect-square cursor-pointer hidden md:block"
+          />
+          <input
+            type="search"
+            placeholder="search with any data"
+            className="border px-6 py-2 pb-3 rounded-full leading-snug text-ani-default-dark font-medium text-lg shadow-ani-default-shadow"
+            value={search}
+            onChange={handleSearch}
+          />
+        </div>
+        <div>
+          <input
+            type="search"
+            placeholder="search with name"
+            className="border px-6 py-2 pb-3 rounded-full leading-snug text-ani-default-dark font-medium text-lg shadow-ani-default-shadow"
+            value={fecetSearch}
+            onChange={handleFecetSearch}
+          />
+        </div>
       </div>
+
+      <div
+        className={`flex ${
+          fecetSearch && fecetLabel ? "block" : "hidden"
+        } justify-center gap-4`}
+      >
+        {fecetLabel.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => handleFecetFilter(item.name)}
+            className="px-4 py-2 border border-white rounded-full text-white shadow-ani-default-shadow"
+          >
+            {item?.name}
+          </button>
+        ))}
+      </div>
+
       <table className="border-collapse border border-gray-400 w-full mt-4 shadow-ani-default-shadow">
         <thead className="bg-ani-default-dark text-white ">
           <tr>
-            <th className="border border-gray-300 px-4 py-2">Name</th>
-            <th className="border border-gray-300 px-4 py-2">Company</th>
-            <th className="border border-gray-300 px-4 py-2">Email</th>
-            <th className="border border-gray-300 px-4 py-2">Phone</th>
-            <th className="border border-gray-300 px-4 py-2">Address</th>
+            <th className="border border-gray-300 px-4 py-2 break-all">Name</th>
+            <th className="border border-gray-300 px-4 py-2 break-all">
+              Company
+            </th>
+            <th className="border border-gray-300 px-4 py-2 break-all">
+              Email
+            </th>
+            <th className="border border-gray-300 px-4 py-2 break-all">
+              Phone
+            </th>
+            <th className="border border-gray-300 px-4 py-2 break-all ">
+              Address
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -157,13 +147,19 @@ const Search = () => {
                   : "bg-ani-secondry-color"
               } text-white`}
             >
-              <td className="border border-gray-300 px-4 py-2">{item.name}</td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-gray-300 px-4 py-2 break-all">
+                {item.name}
+              </td>
+              <td className="border border-gray-300 px-4 py-2 break-all">
                 {item.company}
               </td>
-              <td className="border border-gray-300 px-4 py-2">{item.email}</td>
-              <td className="border border-gray-300 px-4 py-2">{item.phone}</td>
-              <td className="border border-gray-300 px-4 py-2">
+              <td className="border border-gray-300 px-4 py-2 break-all">
+                {item.email}
+              </td>
+              <td className="border border-gray-300 px-4 py-2 break-all">
+                {item.phone}
+              </td>
+              <td className="border border-gray-300 px-4 py-2 break-all">
                 {item.address}
               </td>
             </tr>

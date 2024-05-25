@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * Stopwatch component that tracks time in minutes, seconds, and milliseconds.
+ * Includes start/pause and reset functionalities.
+ *
+ * @component
+ */
 const Stopwatch = () => {
+  // State variables for tracking time
   const [milliseconds, setMilliseconds] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [running, setRunning] = useState(false);
 
+  /**
+   * useEffect hook to manage the interval for updating the time when the stopwatch is running.
+   */
   useEffect(() => {
     let intervalId;
 
@@ -25,7 +35,7 @@ const Stopwatch = () => {
             return prevMilliseconds + 1;
           }
         });
-      }, 10);
+      }, 10); // Update every 10 milliseconds
     }
 
     return () => {
@@ -35,9 +45,16 @@ const Stopwatch = () => {
     };
   }, [running]);
 
+  /**
+   * Toggles the running state of the stopwatch.
+   */
   const handleStartPause = () => {
     setRunning((runningStatus) => !runningStatus);
   };
+
+  /**
+   * Resets the stopwatch to its initial state and stops it if it's running.
+   */
   const handleReset = () => {
     setRunning(false);
     setMilliseconds(0);
@@ -48,7 +65,7 @@ const Stopwatch = () => {
   return (
     <div className="bg-ani-primary-color  flex w-full h-[100vh] justify-center items-center">
       <div className="bg-ani-secondry-light-color px-12 py-8 w-fit flex flex-col gap-28 rounded-lg shadow-ani-default-shadow">
-        <div className="text-5xl flex gap-6 leading-tight">
+        <div className="text-5xl flex gap-6 leading-tight justify-between">
           <span className="leading-snug">
             {minutes.toString().padStart(2, "0")}
           </span>{" "}
