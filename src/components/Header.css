@@ -1,0 +1,6 @@
+li {
+  list-style: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 4px;
+}

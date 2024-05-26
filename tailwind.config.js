@@ -12,6 +12,7 @@ module.exports = {
       },
       boxShadow: {
         "ani-default-shadow": "0 0 16px 4px #2E3944",
+        "ani-logo-shadow": "0 0 8px -1px #122930 ",
       },
     },
   },
