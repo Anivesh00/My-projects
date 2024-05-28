@@ -1,15 +1,15 @@
 // App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom"; // Import Routes and Route
-import Search from "./components/Search";
-import Stopwatch from "./components/Stopwatch";
-import Header from "./components/Header";
-import Chatbot from "./components/Chatbot";
+import Search from "./components/search/Search";
+import Stopwatch from "./components/stop-watch/Stopwatch";
+import Chatbot from "./components/chat-bot/Chatbot";
+import Home from "./components/Home";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Search />} />
+      <Route path="/" element={<Home />} />
       <Route path="/stop-watch" element={<Stopwatch />} />
       <Route path="/search" element={<Search />} />
       <Route path="/chatbot" element={<Chatbot />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import searchSvg from "../icons/search-svgrepo-com.svg";
-import { data } from "../JSON Data/data";
+import searchSvg from "../../icons/search-svgrepo-com.svg";
+import { data } from "../../JSON Data/data";
 
 /**
  * Search component that allows searching through data with various criteria.

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import logo from "../icons/logo.jpg";
-import cross from "../icons/cross-black.svg";
-import send from "../icons/send-svgrepo-com.svg";
+import logo from "../../icons/logo.jpg";
+import cross from "../../icons/cross.svg";
+import send from "../../icons/send-svgrepo-com.svg";
 import "./Chatbot.css";
-import { botMessage, greetMessage } from "../JSON Data/data";
+import { botMessage, greetMessage } from "../../JSON Data/data";
 
 /**
  * Chatbot component renders a chatbot interface with functionality for user input
