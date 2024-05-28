@@ -28,8 +28,10 @@ const Header = () => {
       </button>
       <div
         className={`gap-3 lg:gap-4 text-white text-lg font-medium ${
-          toggleNavigation ? "flex " : "hidden"
-        } lg:flex`}
+          toggleNavigation
+            ? "flex absolute flex-col w-full bg-ani-secondry-color top-[72px] left-0 px-6 py-4"
+            : "hidden "
+        } lg:flex lg:relative lg:flex-row`}
       >
         <a href="/stop-watch">
           <li>
