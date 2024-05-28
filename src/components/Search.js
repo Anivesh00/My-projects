@@ -86,7 +86,6 @@ const Search = () => {
           />
           <input
             type="search"
-            placeholder="search with any data"
             className="border px-6 py-2 pb-3 rounded-full leading-snug text-ani-default-dark font-medium text-lg shadow-ani-default-shadow"
             value={search}
             onChange={handleSearch}

@@ -99,3 +99,38 @@ export const data = [
     address: "831 Woodruff Avenue, Newry, New Hampshire, 5692",
   },
 ];
+
+export const botMessage = [
+  "How may I help you?",
+  "How are you?",
+  "Yes, it's fine.",
+  "Do it yourself.",
+  "I'm here to assist you.",
+  "What can I do for you today?",
+  "How can I assist you?",
+  "Is there anything you need help with?",
+  "Feel free to ask me anything.",
+  "I'm here to help!",
+  "How can I make your day better?",
+  "Do you need assistance with something?",
+  "How can I be of service?",
+  "What do you need help with?",
+  "I'm ready to help you.",
+  "What would you like to know?",
+  "Ask me anything.",
+  "I'm here for you.",
+  "How can I support you?",
+  "Is there something you need?",
+  "Can I help you with anything?",
+  "Do you need help with something specific?",
+  "What can I do for you?",
+  "How can I assist you today?",
+  "Is there something you want to ask?",
+  "What do you need?",
+  "How can I be of help?",
+  "Do you need any help?",
+  "I'm here to assist.",
+  "What can I help you with?",
+];
+
+export const greetMessage = "Hi, i am a ChatBOT. How may i help you";
