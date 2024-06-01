@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../icons/logo.jpg";
-import cross from "../../icons/cross.svg";
+import cross from "../../icons/cross-black.svg";
 import send from "../../icons/send-svgrepo-com.svg";
-import "./Chatbot.css";
 import { botMessage, greetMessage } from "../../JSON Data/data";
 
 /**
@@ -69,7 +68,7 @@ const Chatbot = () => {
       </h1>
 
       <div
-        className={`bg-white w-[320px] lg:w-[450px] mx-auto shadow-ani-default-shadow rounded-lg h-[400px] ${
+        className={`bg-white w-[320px] lg:w-[450px] mx-auto shadow-ani-default-shadow rounded-lg h-[345px] ${
           toggleModal ? "flex relative flex-col gap-4" : "hidden"
         } py-5 px-6`}
       >
@@ -104,7 +103,7 @@ const Chatbot = () => {
             ))}
           </div>
 
-          <div className="flex justify-between gap-6 absolute bottom-8">
+          <div className="flex justify-between gap-6">
             <input
               type="text"
               className="w-[215px] lg:w-[350px] px-6 pb-1 rounded-full bg-ani-primary-light-color text-white"

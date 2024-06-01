@@ -1,3 +1,8 @@
+import watch from "../icons/stopwatch-svgrepo-com.svg";
+import search from "../icons/search-folder-svgrepo-com.svg";
+import chatbot from "../icons/chat-bot-svgrepo-com.svg";
+import error from "../icons/error-404-on-screen-svgrepo-com.svg";
+
 export const data = [
   {
     _id: "664991c7a354578bd5ee4f5e",
@@ -134,3 +139,26 @@ export const botMessage = [
 ];
 
 export const greetMessage = "Hi, i am a ChatBOT. How may i help you";
+
+export const Navigationdata = [
+  {
+    displayName: "Stop watch",
+    url: "/stop-watch",
+    svg: watch,
+  },
+  {
+    displayName: "Search",
+    url: "/search",
+    svg: search,
+  },
+  {
+    displayName: "Chatbot",
+    url: "/chatbot",
+    svg: chatbot,
+  },
+  {
+    displayName: "Testing",
+    url: "/testing",
+    svg: error,
+  },
+];

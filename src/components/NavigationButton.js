@@ -1,18 +1,36 @@
 import React from "react";
 import arrow from "../icons/right-arrow.svg";
 
-const NavigationButton = ({ onClickLeft, onClickRight }) => {
+const NavigationButton = ({ carouselRef, cardWidth, gapWidth }) => {
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: -(cardWidth + gapWidth),
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: cardWidth + gapWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div className="absolute flex justify-between top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2">
+    <div className="flex">
       <button
-        className="bg-white rounded-full p-2 cursor-pointer"
-        onClick={onClickLeft}
+        className="bg-white rounded-full p-2 cursor-pointer absolute z-10 -translate-y-1/2"
+        onClick={scrollLeft}
       >
         <img src={arrow} alt="left navigate" className="w-6 h-6 rotate-180" />
       </button>
       <button
-        className="bg-white rounded-full p-2 cursor-pointer"
-        onClick={onClickRight}
+        className="bg-white rounded-full p-2 cursor-pointer absolute -translate-y-1/2 right-7 z-10"
+        onClick={scrollRight}
       >
         <img src={arrow} alt="right navigate" className="w-6 h-6" />
       </button>
