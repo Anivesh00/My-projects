@@ -1,7 +1,7 @@
-import watch from "../icons/stopwatch-svgrepo-com.svg";
+import watch from "../icons/stopwatch-svgrepo-com (1).svg";
 import search from "../icons/search-folder-svgrepo-com.svg";
 import chatbot from "../icons/chat-bot-svgrepo-com.svg";
-import error from "../icons/error-404-on-screen-svgrepo-com.svg";
+import error from "../icons/404-error-svgrepo-com.svg";
 
 export const data = [
   {

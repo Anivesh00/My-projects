@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-import logo from "../icons/logo.jpg";
 import { Navigationdata } from "../JSON Data/data";
 import NavigationButton from "./NavigationButton";
 

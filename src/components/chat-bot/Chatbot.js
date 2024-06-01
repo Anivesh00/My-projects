@@ -55,7 +55,7 @@ const Chatbot = () => {
    * it triggers the handleAddMessage function.
    * @param {React.KeyboardEvent} event - The keyboard event object.
    */
-  const handleKeyPress = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleAddMessage();
     }
@@ -109,7 +109,7 @@ const Chatbot = () => {
               className="w-[215px] lg:w-[350px] px-6 pb-1 rounded-full bg-ani-primary-light-color text-white"
               placeholder="Type here!"
               ref={msg}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
             />
             <button onClick={handleAddMessage}>
               <img src={send} className="w-8 h-6" />
